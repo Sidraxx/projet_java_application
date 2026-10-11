@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.demo2.HelloController" stylesheets="@styles.css">
+
+    <!-- NavBar-->
+    <HBox fx:id="navbarContainer" style="-fx-min-height: 80px; -fx-background-color: #EAEEF7;">
+        <!-- Le contenu du navbar sera généré dynamiquement par NavBarController -->
+    </HBox>
+
+    <!--Main-->
+    <HBox fx:id="mainContentContainer">
+        <!-- Sidebar -->
+        <VBox styleClass="sidebar-wrapper" alignment="TOP_CENTER" spacing="10">
+            <HBox fx:id="allFeedBox" styleClass="sidebar-item-wrapper" spacing="15" alignment="CENTER" 
+                  style="-fx-cursor: hand;" onMouseClicked="#handleAllFeedClick">
+                <padding>
+                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+                </padding>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <Image url="@img/home_svg.png"/>
+                </ImageView>
+                <Label>All Feed</Label>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="COMMUNITIES" style="-fx-text-fill: #888; -fx-font-size: 11; -fx-font-weight: bold;"/>
+<!--                <Button text="+" -->
+<!--                        style="-fx-background-color: transparent; -fx-text-fill: #888; -fx-padding: 0; -fx-cursor: hand; -fx-font-size: 14;"/>-->
+            </HBox>
+            <VBox fx:id="subredditsContainer" spacing="5" alignment="TOP_CENTER">
+                <!-- Les subreddits seront ajoutés ici dynamiquement -->
+            </VBox>
+            
+
+        </VBox>
+
+        <!--  Main Content  -->
+        <VBox alignment="TOP_RIGHT" spacing="20" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+
+            <!--Make a post-->
+            <VBox spacing="10" alignment="TOP_RIGHT" styleClass="make-post-wrapper">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+                <TextField fx:id="postTitleField" promptText="Titre du post..." styleClass="make-post-text"/>
+                <TextArea fx:id="postContentArea" promptText="Contenu du post..." prefRowCount="3" wrapText="true" styleClass="make-post-text"/>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Label text="Poster dans :" style="-fx-text-fill: white;"/>
+                    <ComboBox fx:id="subredditComboBox" promptText="Choisir une communauté..." styleClass="navbar-searchbar" prefWidth="200"/>
+                    <Label fx:id="postingToLabel" text="r/Generic" visible="false" managed="false" style="-fx-text-fill: #3498db; -fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <Label fx:id="postErrorLabel" styleClass="error-label" visible="false" managed="false"/>
+                    <Button styleClass="make-post-button" onAction="#handleCreatePost">Post</Button>
+                </HBox>
+            </VBox>
+
+            <!-- Conteneur dynamique pour les posts -->
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                <VBox fx:id="postsContainer" spacing="20">
+                    <!-- Les posts seront ajoutés ici dynamiquement par Java -->
+                </VBox>
+            </ScrollPane>
+
+        </VBox>
+
+        <!--  Related Posts  -->
+        <VBox styleClass="related-posts-wrapper" minWidth="300">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <Label fx:id="trendingTitleLabel" styleClass="related-posts-title" text="Trending Posts"/>
+
+            <VBox fx:id="trendingContainer" spacing="15">
+                <!-- Les posts populaires seront ajoutés ici dynamiquement -->
+            </VBox>
+        </VBox>
+    </HBox>
+
+</VBox>
