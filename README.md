@@ -1,3 +1,6 @@
+Ceci n'est pas le projet original, c'est une copie car le repository original appartient à un camarade de classe qui l'à mis en private. Merci de votre compréhension.
+
+
 # Projet-JAVA-ESEO
 
 Projet Java destine aux etudiants ESEO. C'est une application de type forum (comme Reddit) qui permet aux utilisateurs de poster du contenu, de commenter et d'interagir avec d'autres membres.
